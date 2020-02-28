@@ -234,7 +234,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ade6887fd9bd74177769645ab5c474824f8a418a",
                 "reference": "ade6887fd9bd74177769645ab5c474824f8a418a",
-
                 "shasum": ""
             },
             "require": {
@@ -279,9 +278,7 @@
                 "validation",
                 "validator"
             ],
-
             "time": "2020-02-13T22:36:52+00:00"
-
         },
         {
             "name": "fideloper/proxy",
