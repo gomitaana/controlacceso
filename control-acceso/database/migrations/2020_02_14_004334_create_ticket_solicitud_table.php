@@ -18,9 +18,11 @@ class CreateTicketSolicitudTable extends Migration
             $table->timestamp('fechaVisitaTicket');
             $table->dateTime('horaInicialPermitidaTicket');
             $table->dateTime('horaCaducaTicket');
-            $table->enum('statusTicket', ['Activo', 'Inactivo']);
-            $table->integer('fkInvitadoTicket');
+            $table->date('fechaCaducaTicket');
+            $table->enum('statusTicket', ['Activo', 'Inactivo', 'Pendiente', 'Rechazado']);
+            $table->unsignedBigInteger('fkInvitadoTicket');
             $table->timestamps();
+            $table->foreign('fkInvitadoTicket')->references('idInvitado')->on('invitado');
         });
     }
 

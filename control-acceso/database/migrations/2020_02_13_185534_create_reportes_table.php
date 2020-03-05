@@ -17,9 +17,11 @@ class CreateReportesTable extends Migration
             $table->bigIncrements('idReporte');
             $table->string('tituloReporte', 40);
             $table->text('descripcionReporte');
-            $table->enum('statusReporte', array('Activo', 'Inactivo', 'Atendido'))->default('Activo');
-            $table->integer('fkPersona');
+            $tale->time('horaCreacionReporte');
+            $table->enum('statusReporte', ['Activo', 'Inactivo', 'Atendido'])->default('Activo');
+            $table->unsignedBigInteger('fkPersonaReporte');
             $table->timestamps();
+            $table->foreign('fkPersonaReporte')->references('idPersona')->on('persona');
         });
     }
 

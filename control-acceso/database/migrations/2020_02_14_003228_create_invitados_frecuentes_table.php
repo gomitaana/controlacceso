@@ -15,10 +15,14 @@ class CreateInvitadosFrecuentesTable extends Migration
     {
         Schema::create('invitados_frecuentes', function (Blueprint $table) {
             $table->bigIncrements('idInvitadoFrecuente');
-            $table->integer('fkCasaInvitadoFrecuente');
-            $table->integer('fkPersonaInvitadoFrecuente');
-            $table->integer('fkCInvitadoInvitadoFrecuente');
+            $table->unsignedBigInteger('fkCasaInvitadoFrecuente');
+            $table->unsignedBigInteger('fkPersonaInvitadoFrecuente');
+            $table->unsignedBigInteger('fkInvitadoInvitadoFrecuente');
             $table->timestamps();
+            $table->enum('statusInvitadoFrecuente',['Activo','Inactivo'])->default('Activo');
+            $table->foreign('fkCasaInvitadoFrecuente')->references('idCasa')->on('casas');
+            $table->foreign('fkPersonaInvitadoFrecuente')->references('idPersona')->on('persona');
+            $table->foreign('fkInvitadoInvitadoFrecuente')->references('idInvitado')->on('invitado');
         });
     }
 
