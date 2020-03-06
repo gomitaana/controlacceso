@@ -15,7 +15,7 @@ class CreateRegistrovisitaTable extends Migration
     {
         Schema::create('registrovisita', function (Blueprint $table) {
             $table->bigIncrements('idRegistroVisita');
-            $table->integer('fkTicketSolicitudVisita');
+            $table->unsignedBigInteger('fkTicketSolicitudVisita');
             $table->time('horaLlegadaVisita');
             $table->date('fechaLlegadaVisita');
             $table->time('horaSalidaVisita');
@@ -25,6 +25,7 @@ class CreateRegistrovisitaTable extends Migration
             $table->string('placaAutoVisita');
             $table->string('motivoVisita');
             $table->timestamps();
+            $table->foreign('fkTicketSolicitudVisita')->references('idTicket')->on('ticket_solicitud');
         });
     }
 

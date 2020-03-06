@@ -14,15 +14,17 @@ class CreateCondominiosTable extends Migration
     public function up()
     {
         Schema::create('condominios', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('idCondominio');
             $table->string('nombreCondominio', 100);
             $table->string('paisCondominio', 100);
             $table->string('estadoCondominio', 100);
             $table->string('direccionCondominio', 200);
             $table->integer('codigoPostalCondominio');
             $table->integer('totalDeCasasCondominio');
-            $table->enum('statusCondominio', ['Activo', 'Inactivo']);
+            $table->enum('statusCondominio', ['Activo', 'Inactivo'])->default('Activo');
+            $table->unsignedBigInteger('fkUsuarioCondominio');
             $table->timestamps();
+            $table->foreign('fkUsuarioCondominio')->references('idUsuario')->on('users');
         });
     }
 

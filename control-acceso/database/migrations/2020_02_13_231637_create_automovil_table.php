@@ -18,10 +18,11 @@ class CreateAutomovilTable extends Migration
             $table->string('marcaAutomovil', 50);
             $table->string('colorAutomovil', 30);
             $table->string('noPlacaAutomovil', 30);
-            $table->integer('fkCasaAutomovil');
-            $table->enum('statusAutomovil', ['Activo', 'Inactivo']);
+            $table->unsignedBigInteger('fkCasaAutomovil');
             $table->enum('tipoAutomovil', ['Moto', 'Carro', 'Camioneta']);
             $table->timestamps();
+            $table->enum('statusAutomovil', ['Activo', 'Inactivo'])->default('Activo');
+            $table->foreign('fkCasaAutomovil')->references('idCasa')->on('casas');
         });
     }
 
