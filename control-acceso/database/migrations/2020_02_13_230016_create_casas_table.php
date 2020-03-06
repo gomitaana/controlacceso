@@ -19,9 +19,12 @@ class CreateCasasTable extends Migration
             $table->integer('noInteriorCasa');
             $table->integer('totalPersonasCasa');
             $table->integer('totalMascotasCasa');
-            $table->enum('statusCasa', ['Activo', 'Inactivo']);
-            $table->integer('fkCondominioCasa');
+            $table->string('nombreContactoPrincipalCasa');
+            $table->integer('numeroContactoPrincipalCasa');
+            $table->unsignedBigInteger('fkCondominioCasa');
             $table->timestamps();
+            $table->enum('statusCasa', ['Activo', 'Inactivo'])->default('Activo');
+            $table->foreign('fkCondominioCasa')->references('idCondominio')->on('condominios');
         });
     }
 

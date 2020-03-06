@@ -15,15 +15,14 @@ class CreateInvitadoTable extends Migration
     {
         Schema::create('invitado', function (Blueprint $table) {
             $table->bigIncrements('idInvitado');
-            $table->string('nombreCompleto');
+            $table->string('nombreCompletoInvitado');
             $table->integer('telefonoInvitado');
-            $table->enum('generoInvitado', array('M', 'F'));
+            $table->enum('generoInvitado', ['Masculino', 'Femenino', 'Otro']);
             $table->string('emailInvitado');
-            $table->enum('statusInvitado', array('Activo', 'Inactivo'))->default('Activo');
-            $table->integer('fkPersona');
-            $table->integer('fkIdentificacion');
-            $table->integer('fkPlacaInvitado');
+            $table->enum('statusInvitado', ['Activo', 'Inactivo'])->default('Activo');
+            $table->unsignedBigInteger('fkFotoIdentificacionInvitado');
             $table->timestamps();
+            $table->foreign('fkFotoIdentificacionInvitado')->references('idArchivo')->on('archivos');
         });
     }
 

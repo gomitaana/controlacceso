@@ -18,9 +18,10 @@ class CreateContratosTable extends Migration
             $table->date('fechaInicioContrato');
             $table->date('fechaFinContrato');
             $table->string('responsableContrato', 100);
-            $table->enum('statusContrato', ['Activo','Inactivo']);
-            $table->integer('fkCondominioContrato');
+            $table->enum('statusContrato', ['Activo','Inactivo'])->default('Activo');
+            $table->unsignedBigInteger('fkCondominioContrato');
             $table->timestamps();
+            $table->foreign('fkCondominioContrato')->references('idCondominio')->on('condominios');
         });
     }
 
