@@ -25,7 +25,7 @@ class CreateRegistrovisitaTable extends Migration
             $table->string('placaAutoVisita');
             $table->string('motivoVisita');
             $table->timestamps();
-            $table->foreign('fkTicketSolicitudVisita')->references('idTicket')->on('ticket_colicitud');
+            $table->foreign('fkTicketSolicitudVisita')->references('idTicket')->on('ticket_solicitud');
         });
     }
 

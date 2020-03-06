@@ -21,7 +21,7 @@ class CreateContratosTable extends Migration
             $table->enum('statusContrato', ['Activo','Inactivo'])->default('Activo');
             $table->unsignedBigInteger('fkCondominioContrato');
             $table->timestamps();
-            $table->foreign('fkCondominioContrato')->references('idCondominio')->on('condominio');
+            $table->foreign('fkCondominioContrato')->references('idCondominio')->on('condominios');
         });
     }
 
